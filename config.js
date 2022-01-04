@@ -43,7 +43,7 @@ module.exports = {
     ANTIGRP_LINK: process.env.ANTIGRP_LINK === undefined ? 'false' : process.env.ANTIGRP_LINK,
     RULES: process.env.RULES === undefined ? 'default' : process.env.RULES,
     RULES_LOGO: process.env.RULES_LOGO === undefined ? '᳆⃞🇱🇰ᴄʏͥʙᴇͣʀͫ↯ǫᴇᴇɴᬐ' : process.env.RULES_LOGO,
-    BRANCH: 'main',
+    BRANCH: 'master',
     HEROKU: {
         HEROKU: process.env.HEROKU === undefined ? false : convertToBool(process.env.HEROKU),
         API_KEY: process.env.HEROKU_API_KEY === undefined ? '' : process.env.HEROKU_API_KEY,
