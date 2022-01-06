@@ -1,6 +1,6 @@
 const Rico = require('../events');
 const Config = require('../config');
-const {MessageType, MessageOptions, Mimetype} = require('@adiwajshing/baileys');
+const {MessageType, MessageOptions, Mimetype} = require('@blackamda/queenamdi-web-api');
 const {spawnSync} = require('child_process');
 const chalk = require('chalk');
 const axios = require('axios');
