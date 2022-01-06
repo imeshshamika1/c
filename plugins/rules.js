@@ -13,7 +13,7 @@ const axios = require('axios');
 let LOL = Config.WORKTYPE == 'public' ? false : true
 
 const Language = require('../language');
-const Lang = Language.getString('system_stats');
+const Lang = Language.getString('rules');
 
 
 
