@@ -198,11 +198,8 @@
         },
         "system_stats": {
             "ALIVE_DESC": "Check bot online or not",
-            "SYSD_DESC": "System properties.",
             "BOT_V": "Check version of bot.",
-            "version": "3.0.4 - BETA Edition",
-            "RULE_DESC": "කණ්ඩායම් පරිපාලකයින් විසින් නියම කරන ලද නීති පෙන්වයි.", 
-            "rules": "*පරිපාලකයින් විසින් නියම කරන ලද නීති නොමැත.*"
+            "version": "3.0.4 - BETA Edition"
         },
         "tagall": {
             "TAGALL_DESC": "කණ්ඩායමේ සිටින සියල්ලන් ටැග් කරයි.",
