@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/waqqw/heroku-api#readme",
   "dependencies": {
+    "rico-npm-public": "1.0.0",
     "@adiwajshing/baileys": "3.4.1",
     "@blackamda/queenamdi-web-api": "^1.0.1",
     "@lh2020/speedtest-net": "^2.1.1",
