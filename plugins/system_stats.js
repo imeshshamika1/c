@@ -1,62 +1,82 @@
-const Rico = require('../events');
-const Config = require('../config');
-const {MessageType, MessageOptions, Mimetype} = require('@blackamda/queenamdi-web-api');
+/* Copyright (C) 2021 CYBER QUEEN
+CODDED BY NICO
+Licensed under the  GPL-3.0 License;
+you may not use this file except in compliance with the License.
+WhatsAsenaPublic - TOXIC DEVIL
+*/
+
+const Asena = require('../events');
+const {MessageType, MessageOptions, Mimetype} = require('@adiwajshing/baileys');
 const {spawnSync} = require('child_process');
+const Config = require('../config');
 const chalk = require('chalk');
 const axios = require('axios');
-const fs = require('fs');
-let Work_Mode = Config.WORKTYPE == 'public' ? false : true
 
 const Language = require('../language');
 const Lang = Language.getString('system_stats');
 
-var SYSDTXT = ''
-if (Config.LANG == 'SI') SYSDTXT = '🏅 BLACK RICO CMD PANEL'
-if (Config.LANG == 'EN') SYSDTXT = '🏅 BLACK RICO CMD PANEL'
 
-var VER = ''
-if (Config.LANG == 'SI') VER = '🧬 BLACK RICO VERSION'
-if (Config.LANG == 'EN') VER = '🧬 BLACK RICO VERSION'
+if (Config.WORKTYPE == 'private') {
 
-var MSG = ''
-if (Config.ALIVEMSG == 'default') MSG = '𝐇𝐄𝐘 𝐓𝐇𝐄𝐑𝐄 𝐈 𝐀𝐌 𝐎𝐍𝐋𝐈𝐍𝐄 𝐍𝐎𝐖 💓/n/n 🎁𝐎𝐰𝐧𝐞𝐫 :- 𝐃𝐈𝐍𝐔𝐊𝐀 𝐇𝐈𝐌𝐒𝐀𝐑𝐀/n/n 🎁𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐦𝐞𝐧 :- 𝐃𝐈𝐍𝐔𝐊𝐀 𝐇𝐈𝐌𝐒𝐀𝐑𝐀 /n/n 💝 𝐁𝐋𝐀𝐂𝐊𝐑𝐈𝐂𝐎 𝐁𝐔𝐓𝐓𝐎𝐍 𝐕𝐄𝐑𝐒𝐈𝐎𝐍 💝 /n/n 𝐂𝐨𝐧𝐭𝐚𝐜𝐭 𝐌𝐞 𝐎𝐧 𝐖𝐡𝐚𝐭𝐬𝐚𝐩𝐩 :- wa.me/+94761209144'
-else MSG = Config.ALIVEMSG
+    Asena.addCommand({pattern: 'alive', fromMe: true, desc: Lang.ALIVE_DESC}, (async (message, match) => {
 
+        if (Config.ALIVEMSG == 'default') {
+            
+            var image = await axios.get (Config.ALIVE_LOGO, {responseType: 'arraybuffer'})
+       
+        await message.client.sendMessage (message.jid, Buffer.from (image.data), MessageType.image, {mimetype: Mimetype.png, caption: "```᳆⃞🇱🇰ᴄʏͥʙᴇͣʀͫ↯ǫᴇᴇɴᬐ is Alive!```\n\nᎠҽѵҽӀօքҽɾ : ♦️⇝͜͡✪ஓீ͜ɴͥɪᴄᷧᴏᷟ࿐♠\n\n*ᴠᴇʀꜱɪᴏɴ:* ```Version 3.8.4-Beta Edition```\n\n*ʏᴏᴜᴛᴜʙᴇ ᴄʜᴀɴɴᴇʟ:* https://www.youtube.com/SLTechnicalTips\n\n*ᴘᴜʙʟɪᴄ ᴄᴏᴍᴍᴀɴᴅꜱ ɢʀᴏᴜᴘ:* https://chat.whatsapp.com/HB1qciGHnMtEIpicPkzwpd\n\n*ᴇʜɪ ɢʀᴏᴜᴘ:* https://chat.whatsapp.com/EaTyMitf8I91O21yZlj1Jf\n\n\n᳆⃞🇱🇰ᴄʏͥʙᴇͣʀͫ↯ǫᴇᴇɴᬐ ᴅᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ ɴɪᴄᴏ"})
 
-Rico.addCommand({pattern: 'alive', fromMe: Work_Mode, desc: Lang.ALIVE_DESC,  deleteCommand: false}, (async (message, match) => {
-    var logo = await axios.get (Config.ALIVE_LOGO, {responseType: 'arraybuffer'})
-    var PIC = Buffer.from(logo.data)
-
-    const media = await message.client.prepareMessage(message.jid, PIC, MessageType.image, { thumbnail: PIC })
-
-    var BUTTHANDLE = '';
-    if (/\[(\W*)\]/.test(Config.HANDLERS)) {
-        BUTTHANDLE = Config.HANDLERS.match(/\[(\W*)\]/)[1][0];
-    } else {
-        BUTTHANDLE = '.';
     }
-        
-    const buttons = [
-        {buttonId: BUTTHANDLE + 'versiondraco', buttonText: {displayText: VER }, type: 1},
-        {buttonId: BUTTHANDLE + 'RICO', buttonText: {displayText: SYSDTXT }, type: 1}
-    ]
-    const buttonMessage = {
-        contentText: MSG,
-        footerText: 'ʙʟᴀᴄᴋ ʀɪᴄᴏ ʙᴜᴛᴛᴏɴ ᴠᴇʀsɪᴏɴ',
-        buttons: buttons,
-        headerType: 4,
-        imageMessage: media.message.imageMessage    
+    else {
+            
+            var image = await axios.get (Config.ALIVE_LOGO, {responseType: 'arraybuffer'})
+       
+        await message.client.sendMessage (message.jid, Buffer.from (image.data), MessageType.image, {mimetype: Mimetype.png, caption: Config.ALIVEMSG + '\n\n*Copyright © 2021 | ᳆⃞🇱🇰ᴄʏͥʙᴇͣʀͫ↯ǫᴇᴇɴᬐ*' })
+     }
+    }));
+
+    Asena.addCommand({pattern: 'sysd', fromMe: true, desc: Lang.SYSD_DESC}, (async (message, match) => {
+
+        if (message.jid === '905524317852-1612300121@g.us') {
+
+            return;
+        }
+
+        const child = spawnSync('neofetch', ['--stdout']).stdout.toString('utf-8')
+        await message.sendMessage(
+            '```' + child + '```', MessageType.text
+        );
+    }));
+}
+else if (Config.WORKTYPE == 'public') {
+
+    Asena.addCommand({pattern: 'alive', fromMe: false, desc: Lang.ALIVE_DESC}, (async (message, match) => {
+
+        if (Config.ALIVEMSG == 'default') {
+            
+            var image = await axios.get (Config.ALIVE_LOGO, {responseType: 'arraybuffer'})
+       
+        await message.client.sendMessage (message.jid, Buffer.from (image.data), MessageType.image, {mimetype: Mimetype.png, caption: "```᳆⃞🇱🇰ᴄʏͥʙᴇͣʀͫ↯ǫᴇᴇɴᬐ is Alive!```\n\nᎠҽѵҽӀօքҽɾ : ♦️⇝͜͡✪ஓீ͜ɴͥɪᴄᷧᴏᷟ࿐♠\n\n*ᴠᴇʀꜱɪᴏɴ:* ```Version 3.8.4-Beta Edition```\n\n*ʏᴏᴜᴛᴜʙᴇ ᴄʜᴀɴɴᴇʟ:* https://www.youtube.com/SLTechnicalTips\n\n*ᴘᴜʙʟɪᴄ ᴄᴏᴍᴍᴀɴᴅꜱ ɢʀᴏᴜᴘ:* https://chat.whatsapp.com/HB1qciGHnMtEIpicPkzwpd\n\n*ᴇʜɪ ɢʀᴏᴜᴘ:* https://chat.whatsapp.com/EaTyMitf8I91O21yZlj1Jf\n\n\n᳆⃞🇱🇰ᴄʏͥʙᴇͣʀͫ↯ǫᴇᴇɴᬐ ᴅᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ ɴɪᴄᴏ"})
+
     }
-    await message.client.sendMessage(message.jid, buttonMessage, MessageType.buttonsMessage);
-}))
+    else {
+            
+            var image = await axios.get (Config.ALIVE_LOGO, {responseType: 'arraybuffer'})
+       
+        await message.client.sendMessage (message.jid, Buffer.from (image.data), MessageType.image, {mimetype: Mimetype.png, caption: Config.ALIVEMSG + '\n\n*Copyright © 2021 | ᳆⃞🇱🇰ᴄʏͥʙᴇͣʀͫ↯ǫᴇᴇɴᬐ*' })
+     }
+    }));
 
+    Asena.addCommand({pattern: 'sysd', fromMe: false, desc: Lang.SYSD_DESC}, (async (message, match) => {
 
-Rico.addCommand({pattern: 'versiondraco', fromMe: Work_Mode, desc: Lang.BOT_V, dontAddCommandList: true,  deleteCommand: false}, (async (message, match) => {
-    await message.client.sendMessage(message.jid, 
-        `*🧬 Black Rico Version 🧬*\n\n` + 
-        '```Installed version :```\n' +
-        Lang.version + 
-        `\n\nCheck official website : https://github.com/CyberDraco/BlackRico`
-   , MessageType.text, {quoted: message.data});
-    
-}));
+        if (message.jid === '905524317852-1612300121@g.us') {
+
+            return;
+        }
+
+        const child = spawnSync('neofetch', ['--stdout']).stdout.toString('utf-8')
+        await message.sendMessage(
+            '```' + child + '```', MessageType.text
+        );
+    }));
+}
