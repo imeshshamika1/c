@@ -2,7 +2,7 @@
 const Asena = events
 const Build = build
 const {MessageType} = require('@adiwajshing/baileys');
-
+ 
 var DM_DESC = ''
 if (Build.LANG == 'SI') DM_DESC = 'කණ්ඩායම් සාමාජිකයෙකුට සෘජු පණිවිඩයක් යවන්න.'
 if (Build.LANG == 'EN') DM_DESC = 'Send a direct message to a group member.'
